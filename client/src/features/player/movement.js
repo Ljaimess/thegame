@@ -4,8 +4,8 @@ import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from "../../config/constants";
 
 export default function handleMovement(player) {
 
-    function getNewPostion(direction) {
-        const oldPos = store.getState().player.position
+    function getNewPostion(oldPos, direction) {
+        // const oldPos = store.getState().player.position
         // eslint-disable-next-line default-case
         switch (direction) {
             case "west":
@@ -16,53 +16,84 @@ export default function handleMovement(player) {
                 return [oldPos[0], oldPos[1] - SPRITE_SIZE]
             case "south":
                 return [oldPos[0], oldPos[1] + SPRITE_SIZE]
+            case "action":
+                return []
         }
+    }
+
+    function getSpriteLocation(direction, walkIndex) {
+        switch (direction) {
+            case "south":
+                return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*0}px`
+            case "east":
+                return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*1}px`
+            case "west":
+                return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*2}px`
+            case "north":
+                return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*3}px`
+        }
+    }
+
+    function getWalkIndex() {
+        const walkIndex = store.getState().player.walkIndex
+        return walkIndex >= 7 ? 0 : walkIndex + 1
     }
 
     function observeBounderies(oldPos, newPos) {
         return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
             (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
-            ? newPos : oldPos
+
     }
 
     function observeImpassable(oldPos, newPos) {
-        return 
+        const tiles = store.getState().map.tiles;
+        const y = newPos[1] / SPRITE_SIZE;
+        const x = newPos[0] / SPRITE_SIZE;
+        const nextTile = tiles[y][x];
+        return nextTile < 5
     }
 
-    function dispatchMove(direction) {
-        const oldPos = store.getState().player.position
-        const newPos = getNewPostion(direction)
-
+    function dispatchMove(direction, newPos) {
+        const walkIndex = getWalkIndex()
         store.dispatch({
-
             type: "MOVE_PLAYER",
             payload: {
-                position: observeBounderies(oldPos, getNewPostion(direction))
-
-                
+                position: newPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex),
             }
         })
+    }
+
+    function attemptMove(direction) {
+        const oldPos = store.getState().player.position
+        const newPos = getNewPostion(oldPos, direction)
+        if (observeBounderies(oldPos, newPos) && observeImpassable(oldPos, newPos))
+            dispatchMove(direction, newPos)
     }
 
     function handleKeyDown(e) {
         e.preventDefault()
         switch (e.keyCode) {
             case 37:
-                return dispatchMove("west")
+                return attemptMove("west")
             case 38:
-                return dispatchMove("north")
+                return attemptMove("north")
             case 39:
-                return dispatchMove("east")
+                return attemptMove("east")
             case 40:
-                return dispatchMove("south")
+                return attemptMove("south")
             case 65:
-                return dispatchMove("west")
+                return attemptMove("west")
             case 87:
-                return dispatchMove("north")
+                return attemptMove("north")
             case 68:
-                return dispatchMove("east")
+                return attemptMove("east")
             case 83:
-                return dispatchMove("south")
+                return attemptMove("south")
+            case 32:
+                return attemptMove("action")
             default:
                 console.log(e.keyCode)
         }

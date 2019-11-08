@@ -7,11 +7,19 @@ function getTileSprite(type) {
   // eslint-disable-next-line default-case
   switch (type) {
     case 0:
+      return "empty"
+    case 1:
       return "grass"
+    case 2:
+      return "chest"
+    case 3:
+      return ""
     case 5:
-      return "tree"
+      return "crate"
     case 6:
-      return "rock"
+      return "crystal"
+    case 7:
+      return "monster"
   }
 
 }
@@ -39,14 +47,13 @@ const MapRow = (props) => {
 
 const Map = props => {
   return (
-    <div style={{
+    <div className="map" style={{
       position: "relative",
       top: "0px",
       left: "0px",
       width: "800px",
-      height: "400px",
-      // backgroundColor: "green",
-      border: "4px solid white",
+      height: "480px",
+      // border: "4px solid white",
 
     }} >
       {

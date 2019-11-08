@@ -6,20 +6,21 @@ import handleMovement from "./movement";
 
 const Player = props => {
     return (
-        <div
+        <div className="player"
             style={{
                 position: "absolute",
                 top: props.position[1],
                 left: props.position[0],
                 backgroundImage: `url("${walkSprite}")`,
-                backgroundPosition: "0 0",
+                backgroundPosition: props.spriteLocation,
                 width: "40px",
                 height: "40px",
+                backgroundSize: "320px 160px"
             }}
         />
     );
 }
- 
+
 function mapStateToProps(state) {
     return {
         ...state.player,

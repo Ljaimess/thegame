@@ -1,19 +1,28 @@
 .tile{
-    display: inline-flex
+    display: inline-flex;
+    /* background-color: green; */
+    /* background-image: url("/client/public/tiles/floor.png"); */
+    
 }
 
 .grass {
     background-color: green;
 }
 
-.rock {
-    background-image: url("/tiles/rock.png");
+.crystal {
+    background-image: url("/tiles/crystal.png");
+    background-size: 40px;
 }
 
-/* .tree {
-
-} */
+.crate{
+    background-image: url("/tiles/crate.png");
+    background-size: 40px;
+}
 
 .row {
     height: 40px;
+}
+
+.map{
+    background-image: url("/tiles/floor.png");
 }

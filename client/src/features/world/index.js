@@ -1,9 +1,9 @@
 import React from 'react';
-import Map from "../map"; 
-import Player from "../player"; 
-import { tiles } from "../../data/maps/1"; 
+import Map from "../map";
+import Player from "../player";
+import { tiles } from "../../data/maps/1";
 import store from "../../config/store";
-
+import Monster from "../monster";
 
 
 const World = props => {
@@ -12,20 +12,22 @@ const World = props => {
         payload: {
             tiles,
         }
-     })
-    return ( 
+    })
+    return (
         <div
             style={{
                 position: "relative",
                 width: "800px",
                 height: "400px",
                 margin: "20px auto",
-        }}
+            }}
         >
+
             <Map />
-        <Player />
+            <Player />
+            <Monster />
         </div>
-     );
+    );
 }
- 
+
 export default World;
