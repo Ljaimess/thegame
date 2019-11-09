@@ -1,6 +1,7 @@
 import store from "../../config/store";
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from "../../config/constants";
 
+import initiateBattle from "../battle/logic";
 
 export default function handleMovement(player) {
 
@@ -80,8 +81,7 @@ export default function handleMovement(player) {
         if (observeBounderies(oldPos, newPos) && observeImpassable(oldPos, newPos))
             dispatchMove(direction, newPos)
         if (monsterInteraction(oldPos, newPos))
-            // battle();
-            console.log("BATTLE FUNCTION")
+            initiateBattle();
     }
 
     function handleKeyDown(e) {
