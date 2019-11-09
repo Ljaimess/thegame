@@ -4,6 +4,7 @@ import Player from "../player";
 import { tiles } from "../../data/maps/1";
 import store from "../../config/store";
 import Monster from "../monster";
+// import Battle from "../battle";
 
 
 const World = props => {
@@ -26,6 +27,7 @@ const World = props => {
             <Map />
             <Player />
             <Monster />
+            {/* <Battle /> */}
         </div>
     );
 }

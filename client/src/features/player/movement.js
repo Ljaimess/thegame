@@ -53,6 +53,14 @@ export default function handleMovement(player) {
         return nextTile < 5
     }
 
+    function monsterInteraction(oldPos, newPos) {
+        const tiles = store.getState().map.tiles;
+        const y = newPos[1] / SPRITE_SIZE;
+        const x = newPos[0] / SPRITE_SIZE;
+        const nextTile = tiles[y][x];
+        return nextTile === 7
+    }
+
     function dispatchMove(direction, newPos) {
         const walkIndex = getWalkIndex()
         store.dispatch({
@@ -71,6 +79,9 @@ export default function handleMovement(player) {
         const newPos = getNewPostion(oldPos, direction)
         if (observeBounderies(oldPos, newPos) && observeImpassable(oldPos, newPos))
             dispatchMove(direction, newPos)
+        if (monsterInteraction(oldPos, newPos))
+            // battle();
+            console.log("BATTLE FUNCTION")
     }
 
     function handleKeyDown(e) {

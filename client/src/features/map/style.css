@@ -26,3 +26,8 @@
 .map{
     background-image: url("/tiles/floor.png");
 }
+
+.monster{
+    background-image: url("/tiles/monster2.gif");
+    background-size: 40px;
+}
