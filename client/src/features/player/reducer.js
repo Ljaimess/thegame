@@ -22,6 +22,7 @@ const initialState = {
         value: 25,
         uses: 15,
     },
+    canBattle: false
 
 };
 

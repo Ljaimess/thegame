@@ -27,8 +27,7 @@ const World = props => {
 
             <Map />
             <Player />
-            <Battle />
-            {/* {this.state.canBattle ? <Battle/> : ""} */}
+            {store.getState().player.canBattle ? <Battle/> : ""}
             
         </div>
     );
