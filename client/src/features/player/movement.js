@@ -25,13 +25,15 @@ export default function handleMovement(player) {
     function getSpriteLocation(direction, walkIndex) {
         switch (direction) {
             case "south":
-                return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*0}px`
+                return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 0}px`
             case "east":
-                return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*1}px`
+                return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 1}px`
             case "west":
-                return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*2}px`
+                return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`
             case "north":
-                return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*3}px`
+                return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 3}px`
+            default:
+                console.log("Hi")
         }
     }
 
@@ -82,6 +84,7 @@ export default function handleMovement(player) {
             dispatchMove(direction, newPos)
         if (monsterInteraction(oldPos, newPos))
             initiateBattle();
+        
     }
 
     function handleKeyDown(e) {

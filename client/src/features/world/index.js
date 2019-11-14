@@ -3,6 +3,7 @@ import Map from "../map";
 import Player from "../player";
 import { tiles } from "../../data/maps/1";
 import store from "../../config/store";
+import Battle from "../battle";
 
 // import Battle from "../battle";
 
@@ -26,8 +27,9 @@ const World = props => {
 
             <Map />
             <Player />
-            {/* <Monster /> */}
-            {/* <Battle /> */}
+            <Battle />
+            {/* {this.state.canBattle ? <Battle/> : ""} */}
+            
         </div>
     );
 }

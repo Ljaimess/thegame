@@ -1,10 +1,7 @@
-// import store from "../../config/store";
-
-const initiateBattle = (battle) => {
-
-    console.log("battle");
-
-    return ;
+const initiateBattle = () => {
+    return ( 
+        console.log("battle")
+     );
 }
  
 export default initiateBattle;
