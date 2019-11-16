@@ -3,9 +3,11 @@ import Map from "../map";
 import Player from "../player";
 import { tiles } from "../../data/maps/1";
 import store from "../../config/store";
-import Battle from "../battle";
+import Battle from "../battle/index";
 
 // import Battle from "../battle";
+
+let canBattle = store.getState().battle.canBattle;
 
 
 const World = props => {
@@ -22,12 +24,13 @@ const World = props => {
                 width: "800px",
                 height: "400px",
                 margin: "20px auto",
-            }}
-        >
+            }}>
 
             <Map />
             <Player />
-            {store.getState().player.canBattle ? <Battle/> : ""}
+            <Battle />
+            {/* {canBattle ? <Battle/> : <h1>{store.getState().player.name}</h1>} */}
+
             
         </div>
     );

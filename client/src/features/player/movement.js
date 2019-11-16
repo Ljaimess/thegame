@@ -6,8 +6,7 @@ import initiateBattle from "../battle/logic";
 export default function handleMovement(player) {
 
     function getNewPostion(oldPos, direction) {
-        // const oldPos = store.getState().player.position
-        // eslint-disable-next-line default-case
+
         switch (direction) {
             case "west":
                 return [oldPos[0] - SPRITE_SIZE, oldPos[1]]
@@ -19,6 +18,8 @@ export default function handleMovement(player) {
                 return [oldPos[0], oldPos[1] + SPRITE_SIZE]
             case "action":
                 return []
+            default:
+                console.log("Hi")
         }
     }
 
@@ -84,7 +85,7 @@ export default function handleMovement(player) {
             dispatchMove(direction, newPos)
         if (monsterInteraction(oldPos, newPos))
             initiateBattle();
-        
+
     }
 
     function handleKeyDown(e) {

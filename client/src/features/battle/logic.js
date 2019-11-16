@@ -4,9 +4,9 @@ const initiateBattle = () => {
     return ( 
         console.log("battle"),
         store.dispatch({
-            type: "MOVE_PLAYER",
+            type: "MAKE_BATTLE",
             payload: {
-                canBattle: true
+                canBattle: "true"
             }
         })
      );

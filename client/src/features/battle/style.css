@@ -1,6 +1,6 @@
 .battleScreen{
     height: 100px;
     width: 300px;
-    z-index: 1000;
+    z-index: 1;
     background-color: green;
 }
