@@ -1,6 +1,5 @@
 import store from "../../config/store";
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from "../../config/constants";
-
 import initiateBattle from "../battle/logic";
 
 export default function handleMovement(player) {
@@ -64,6 +63,13 @@ export default function handleMovement(player) {
         const nextTile = tiles[y][x];
         return nextTile === 7
     }
+    function crystalInteraction(oldPos, newPos) {
+        const tiles = store.getState().map.tiles;
+        const y = newPos[1] / SPRITE_SIZE;
+        const x = newPos[0] / SPRITE_SIZE;
+        const nextTile = tiles[y][x];
+        return nextTile === 6
+    }
 
     function dispatchMove(direction, newPos) {
         const walkIndex = getWalkIndex()
@@ -85,8 +91,21 @@ export default function handleMovement(player) {
             dispatchMove(direction, newPos)
         if (monsterInteraction(oldPos, newPos))
             initiateBattle();
-
+        // if (crystalInteraction(oldPos, newPos))
+        //     crystalCollected();
     }
+
+    // const crystalCollected = () => {
+    //     return ( 
+    //         console.log("crystal collecting"),
+    //         store.dispatch({
+    //             type: "CRYSTAL_COLLECT",
+    //             payload: {
+    //                 crystals: +1
+    //             }
+    //         })
+    //      );
+    // }
 
     function handleKeyDown(e) {
         e.preventDefault()

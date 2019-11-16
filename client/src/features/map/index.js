@@ -52,7 +52,7 @@ const Map = props => {
       top: "0px",
       left: "0px",
       width: "800px",
-      height: "480px",
+      height: "560px",
       // border: "4px solid white",
 
     }} >

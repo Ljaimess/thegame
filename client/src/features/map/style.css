@@ -15,7 +15,7 @@
 }
 
 .crate{
-    background-image: url("/tiles/crate.png");
+    background-image: url("/tiles/crate2.png");
     background-size: 40px;
 }
 
@@ -24,10 +24,45 @@
 }
 
 .map{
-    background-image: url("/tiles/floor.png");
+    background-image: url("/tiles/floor2.png");
+
 }
 
 .monster{
     background-image: url("/tiles/monster2.gif");
     background-size: 40px;
+}
+
+.title_img {
+    margin: auto;
+    background-image: url("/tiles/title_img.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    margin: 0 auto;
+    align-content: center;
+    
+}
+
+.title_img_holder {
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: -1;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* display: none; */
+}
+
+.link {
+    /* z-index: 10; */
+    /* text-align: center; */
+    margin-left: 1500px;
+    margin-top: 5%;
+    padding-bottom: 500px;
+    color: red;
+    font-size: 24pt;
+    font-family:  sans;
+    font-weight: bold;
+    
 }

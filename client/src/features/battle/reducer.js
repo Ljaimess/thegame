@@ -17,6 +17,7 @@ const initialState = {
         value: 25,
         uses: 15,
     },
+    crystals: 0,
     
 };
 const battleReducer = (state = initialState, action) => {
@@ -31,4 +32,18 @@ const battleReducer = (state = initialState, action) => {
     }
 };
 
-export default battleReducer;
+// const crystalReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case "CRYSTAL_COLLECT":
+//             return {
+//                 ...state,
+//                 ...action.payload,
+//                 crystals: action.crystals +1
+//             }
+//         default:
+//             return state
+//     }
+// };
+
+// export default { battleReducer, crystalReducer };
+export default battleReducer
